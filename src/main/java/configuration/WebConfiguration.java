@@ -1,7 +1,5 @@
 package configuration;
 
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +14,6 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
-import testapp.ReportHandler;
 
 import java.util.Locale;
 
@@ -26,40 +23,36 @@ import java.util.Locale;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan( basePackages = {"web"} )
-public class WebConfiguration extends WebMvcConfigurerAdapter{
+@ComponentScan(basePackages = {"web"})
+public class WebConfiguration extends WebMvcConfigurerAdapter {
     @Bean
-    public ViewResolver viewResolver ()
-    {
+    public ViewResolver viewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setViewClass( JstlView.class );
-        resolver.setPrefix( "/WEB-INF/jsp/view/" );
-        resolver.setSuffix( ".jsp" );
+        resolver.setViewClass(JstlView.class);
+        resolver.setPrefix("/WEB-INF/jsp/view/");
+        resolver.setSuffix(".jsp");
         return resolver;
     }
 
     @Bean
-    public RequestToViewNameTranslator viewNameTranslator ()
-    {
+    public RequestToViewNameTranslator viewNameTranslator() {
         return new DefaultRequestToViewNameTranslator();
     }
 
     @Override
-    public void addInterceptors( InterceptorRegistry registry )
-    {
-        super.addInterceptors( registry );
+    public void addInterceptors(InterceptorRegistry registry) {
+        super.addInterceptors(registry);
 
         LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
-        interceptor.setParamName( "language" );
+        interceptor.setParamName("language");
 
-        registry.addInterceptor( interceptor );
+        registry.addInterceptor(interceptor);
     }
 
     @Bean
-    public LocaleResolver localeResolver ()
-    {
+    public LocaleResolver localeResolver() {
         SessionLocaleResolver resolver = new SessionLocaleResolver();
-        resolver.setDefaultLocale( Locale.ENGLISH );
+        resolver.setDefaultLocale(Locale.ENGLISH);
         return resolver;
     }
 }
