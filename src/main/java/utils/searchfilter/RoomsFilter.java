@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
  *
  * @author Sasha
  */
-@Component
 public abstract class RoomsFilter {
     private RoomsFilter nextFilter;
 

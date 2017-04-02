@@ -21,7 +21,7 @@ import java.nio.charset.StandardCharsets;
 
 
 @Configuration
-@ComponentScan( basePackages = { "service.impl", "dao.impl", "aspects", "utils.searchfilter"})
+@ComponentScan( basePackages = { "service.impl", "dao.impl", "aspects"})
 @EnableTransactionManagement(
         mode = AdviceMode.PROXY, proxyTargetClass = false,
         order = Ordered.LOWEST_PRECEDENCE
