@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import exception.AppException;
 import exception.ServiceException;
 import model.Reservation;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Controller;
 import service.IReservationService;
 
@@ -12,6 +13,7 @@ import javax.websocket.Session;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Set;
+@EnableAsync
 @Controller
 public class ReservationStatusEvent extends SocketEvent{
 

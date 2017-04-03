@@ -165,8 +165,4 @@ public class ApplicationService implements IApplicationService {
 			throw new ServiceException(e);
 		}
 	}
-
-	public static final void main(String[] args) {
-
-	}
 }

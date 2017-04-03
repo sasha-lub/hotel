@@ -3,6 +3,7 @@ package configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.RequestToViewNameTranslator;
 import org.springframework.web.servlet.ViewResolver;
@@ -20,7 +21,7 @@ import java.util.Locale;
 /**
  * Created by Саня on 03.12.2016.
  */
-
+@EnableAsync
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {"web"})
@@ -55,4 +56,6 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
         resolver.setDefaultLocale(Locale.ENGLISH);
         return resolver;
     }
+
+
 }

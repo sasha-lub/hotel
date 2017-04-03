@@ -8,6 +8,7 @@ import model.Reservation;
 import model.Room;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Controller;
 import service.IApplicationService;
 import service.IReservationService;
@@ -28,7 +29,7 @@ import java.util.List;
 /**
  * Created by Sasha on 01.03.2017.
  */
-
+@EnableAsync
 @Controller
 public class SocketController {
 

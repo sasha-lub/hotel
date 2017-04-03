@@ -5,6 +5,7 @@ import exception.AppException;
 import exception.ServiceException;
 import model.Reservation;
 import model.ReservationStatus;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Controller;
 import service.IReservationService;
 
@@ -20,6 +21,7 @@ import java.util.Set;
  *         Reservation-action handler. Sends new reservation record to
  *         manager-control-page without page reloading
  */
+@EnableAsync
 @Controller
 public class ReservationEvent extends SocketEvent {
 

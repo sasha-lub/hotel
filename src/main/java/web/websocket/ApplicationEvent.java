@@ -5,6 +5,7 @@ import exception.AppException;
 import exception.ServiceException;
 import model.Application;
 import model.ClassOfHotelRoom;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Controller;
 import service.IApplicationService;
 import service.IUserService;
@@ -22,6 +23,7 @@ import java.util.Set;
  *
  * Application-action handler. Sends new application record to manager-control-page without page reloading
  */
+@EnableAsync
 @Controller
 public class ApplicationEvent extends SocketEvent {
 

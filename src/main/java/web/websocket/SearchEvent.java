@@ -6,6 +6,7 @@ import exception.ServiceException;
 import model.ClassOfHotelRoom;
 import model.Room;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
 import service.IRoomService;
 import service.impl.RoomService;
@@ -23,7 +24,7 @@ import java.util.List;
  *
  *         Search-action handler. Works as a filter for interactive room-search
  */
-
+@EnableAsync
 @Component
 public class SearchEvent extends SocketEvent {
 

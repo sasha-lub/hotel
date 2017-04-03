@@ -9,6 +9,7 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.scheduling.TaskScheduler;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
@@ -19,7 +20,7 @@ import org.springframework.validation.beanvalidation.MethodValidationPostProcess
 
 import java.nio.charset.StandardCharsets;
 
-
+@EnableAsync
 @Configuration
 @ComponentScan( basePackages = { "service.impl", "dao.impl", "aspects"})
 @EnableTransactionManagement(

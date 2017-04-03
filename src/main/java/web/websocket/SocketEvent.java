@@ -4,6 +4,7 @@ package web.websocket;
 import com.google.gson.Gson;
 
 import model.Reservation;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
  *
  *         Parent class for all web-socket event handlers
  */
+@EnableAsync
 @Controller
 public abstract class SocketEvent {
 

@@ -5,6 +5,8 @@ import com.google.gson.JsonObject;
 
 import com.google.gson.JsonParser;
 import exception.AppException;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
@@ -19,6 +21,7 @@ import java.util.Set;
  *         message events
  *
  */
+@EnableAsync
 @ServerEndpoint(value = "/webSocketHandler")
 public class WebSocketHandler {
 
