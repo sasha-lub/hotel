@@ -24,7 +24,6 @@ public class WebBootstrap implements WebApplicationInitializer {
 
         AnnotationConfigWebApplicationContext servletContext = new AnnotationConfigWebApplicationContext();
         servletContext.register(WebConfiguration.class);
-        servletContext.register(WebSocketConfiguration.class);
 
         ServletRegistration.Dynamic dispatcher = container.addServlet(
                 "springDispatcher",
