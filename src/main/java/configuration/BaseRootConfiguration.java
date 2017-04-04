@@ -20,7 +20,6 @@ import org.springframework.validation.beanvalidation.MethodValidationPostProcess
 
 import java.nio.charset.StandardCharsets;
 
-@EnableAsync
 @Configuration
 @ComponentScan( basePackages = { "service.impl", "dao.impl", "aspects"})
 @EnableTransactionManagement(
