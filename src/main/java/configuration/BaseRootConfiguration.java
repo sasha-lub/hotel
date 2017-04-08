@@ -38,7 +38,7 @@ public abstract  class BaseRootConfiguration implements SchedulingConfigurer {
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean ()
     {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
-        adapter.setDatabasePlatform( "org.hibernate.dialect.MySQL5Dialect" );
+        adapter.setDatabasePlatform( "org.hibernate.dialect.PostgreSQLDialect" );
 
         LocalContainerEntityManagerFactoryBean factory =
                 new LocalContainerEntityManagerFactoryBean();
@@ -50,10 +50,12 @@ public abstract  class BaseRootConfiguration implements SchedulingConfigurer {
     @Bean
     public DataSource dataSource() {
         final BasicDataSource ds = new BasicDataSource();
-        ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://localhost:3306/booking?serverTimezone=UTC");
-        ds.setUsername("root");
-        ds.setPassword("root");
+        ds.setDriverClassName("org.postgresql.Driver");
+        ds.setUrl("postgres://" +
+                "ec2-50-19-218-160.compute-1.amazonaws.com:5432/" +
+                "d97q0jv8cn7puo");
+        ds.setUsername("xgnunjgoyqvvel");
+        ds.setPassword("7391371271092fe05f59c1fa9affb2b68485f88b580493271d1e6df443533f3d");
         return ds;
     }
 
