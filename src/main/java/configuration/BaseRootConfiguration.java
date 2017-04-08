@@ -1,5 +1,6 @@
 package configuration;
 
+import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.*;
@@ -9,7 +10,6 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.scheduling.TaskScheduler;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 
+import javax.sql.DataSource;
 import java.nio.charset.StandardCharsets;
 
 @Configuration
@@ -44,6 +45,16 @@ public abstract  class BaseRootConfiguration implements SchedulingConfigurer {
         factory.setJpaVendorAdapter( adapter );
         factory.setPersistenceUnitName( getPersistenceUnitName() );
         return factory;
+    }
+
+    @Bean
+    public DataSource dataSource() {
+        final BasicDataSource ds = new BasicDataSource();
+        ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        ds.setUrl("jdbc:mysql://localhost:3306/booking?serverTimezone=UTC");
+        ds.setUsername("root");
+        ds.setPassword("root");
+        return ds;
     }
 
     @Bean
