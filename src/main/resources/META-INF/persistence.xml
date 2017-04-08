@@ -5,7 +5,7 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="postgres://ec2-50-19-218-160.compute-1.amazonaws.com:5432/d97q0jv8cn7puo?serverTimezone=UTC"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-50-19-218-160.compute-1.amazonaws.com:5432/d97q0jv8cn7puo?sslmode=require"/>
             <property name="javax.persistence.jdbc.user" value="xgnunjgoyqvvel"/>
             <property name="javax.persistence.jdbc.password" value="7391371271092fe05f59c1fa9affb2b68485f88b580493271d1e6df443533f3d"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
@@ -16,7 +16,7 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="postgres://ec2-50-19-218-160.compute-1.amazonaws.com:5432/d97q0jv8cn7puo?serverTimezone=UTC"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-50-19-218-160.compute-1.amazonaws.com:5432/d97q0jv8cn7puo?sslmode=require"/>
             <property name="javax.persistence.jdbc.user" value="xgnunjgoyqvvel"/>
             <property name="javax.persistence.jdbc.password" value="7391371271092fe05f59c1fa9affb2b68485f88b580493271d1e6df443533f3d"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
@@ -27,7 +27,7 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="postgres://ec2-50-19-218-160.compute-1.amazonaws.com:5432/d97q0jv8cn7puo?serverTimezone=UTC"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-50-19-218-160.compute-1.amazonaws.com:5432/d97q0jv8cn7puo?sslmode=require"/>
             <property name="javax.persistence.jdbc.user" value="xgnunjgoyqvvel"/>
             <property name="javax.persistence.jdbc.password" value="7391371271092fe05f59c1fa9affb2b68485f88b580493271d1e6df443533f3d"/>
             <property name="hibernate.hbm2ddl.auto" value="validate"/>
