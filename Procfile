@@ -1,1 +1,1 @@
-web:    java -jar target/dependency/webapp-runner.jar -p $PORT target/hotel.war
+web:    java -jar target/dependency/webapp-runner.jar --port $PORT target/hotel.war
