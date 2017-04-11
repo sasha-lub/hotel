@@ -177,10 +177,11 @@ public class ClientController {
         if (field.trim().isEmpty()) {
             return null;
         }
-        switch (field) {
+        try {
+            switch (field) {
             case "name": {
                 if (Validator.Name(name)) {
-                    user.setName(name);
+                    userService.setName(user.getId(), name);
                 } else {
                     return new ResponseEntity(HttpStatus.valueOf(AnswerStatus.INVALID_INPUT));
                 }
@@ -189,15 +190,15 @@ public class ClientController {
             case "phone": {
 
                 if (Validator.Phone(phone)) {
-                    user.setPhone(phone);
+                    userService.setPhone(user.getId(), phone);
                 } else {
                     return new ResponseEntity(HttpStatus.valueOf(AnswerStatus.INVALID_INPUT));
                 }
                 break;
             }
             case "email": {
-                if (Validator.Email(email)) {
-                    user.setEmail(email);
+                if (Validator.Email(email) && userService.getByEmail(email) == null) {
+                    userService.setEmail(user.getId(), email);
                 } else {
                     return new ResponseEntity(HttpStatus.valueOf(AnswerStatus.INVALID_INPUT));
                 }
@@ -205,15 +206,13 @@ public class ClientController {
             }
             case "password": {
                 if (Validator.Password(newPass1) && newPass1.equals(newPass2)) {
-                    user.setPassword(Codec.md5(newPass1));
+                    userService.setPassword(user.getId(), Codec.md5(newPass1));
                 } else {
                     return new ResponseEntity(HttpStatus.valueOf(AnswerStatus.INVALID_INPUT));
                 }
                 break;
             }
         }
-        try {
-            userService.update(user);
         } catch (ServiceException e) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }

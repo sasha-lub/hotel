@@ -37,7 +37,7 @@ public class RoomService implements IRoomService {
 		try {
 			return dao.add(new Room(capacity, classOfRoom, price, description, photoUrl));
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -47,7 +47,7 @@ public class RoomService implements IRoomService {
 		try {
 			return dao.getById(roomId, Room.class);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -57,7 +57,7 @@ public class RoomService implements IRoomService {
 		try {
 			return dao.getAll(Room.class);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -67,7 +67,7 @@ public class RoomService implements IRoomService {
 		try {
 			return dao.getAllByClass(classOfRoom);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -77,7 +77,7 @@ public class RoomService implements IRoomService {
 		try {
 			return dao.getAllByCapacity(numberOfGuests);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -87,7 +87,7 @@ public class RoomService implements IRoomService {
 		try {
 			return dao.getAllByPrice(from, to);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -102,7 +102,7 @@ public class RoomService implements IRoomService {
 				return !unAvailableRooms.contains(room);
 			}
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 		return false;
 	}
@@ -113,7 +113,7 @@ public class RoomService implements IRoomService {
 		try {
 			dao.remove(dao.getById(roomId, Room.class));
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -130,7 +130,7 @@ public class RoomService implements IRoomService {
 		try {
 			return dao.getRoomPhotos(roomId);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -140,7 +140,7 @@ public class RoomService implements IRoomService {
 		try {
 			dao.addRoomPhoto(roomId, photoUrl);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -150,7 +150,7 @@ public class RoomService implements IRoomService {
 		try {
 			return dao.getRoomRecalls(roomId);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -162,7 +162,7 @@ public class RoomService implements IRoomService {
 		try {
 			return dao.addRoomRecall(room.getId(), recall);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -172,7 +172,7 @@ public class RoomService implements IRoomService {
 		try {
 			return dao.getRoomAvgRate(roomId);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -182,7 +182,7 @@ public class RoomService implements IRoomService {
 		try {
 			return dao.getUserRecallForRoom(userId, roomId);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 

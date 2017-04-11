@@ -38,9 +38,8 @@ public class ReportHandler {
 //        System.out.println(roomService.isAvailable(3,
 //                LocalDate.of(2017, 2, 12), LocalDate.of(2017, 3, 3)));
 
-        System.out.println(reservationService.getCountOfConfirmed());
-        System.out.println(reservationService.getCountOfUnpaid());
-        System.out.println(reservationService.getCountOfPaid());
+        System.out.println(roomService.getAll());
+        System.out.println(userService.getAll());
 
     }
 }

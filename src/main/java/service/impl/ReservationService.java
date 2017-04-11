@@ -40,7 +40,7 @@ public class ReservationService implements IReservationService {
 		try {
 			return reservationDao.add(reservation);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -50,7 +50,7 @@ public class ReservationService implements IReservationService {
 		try {
 			return reservationDao.getById(reservationId, Reservation.class);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -60,7 +60,7 @@ public class ReservationService implements IReservationService {
 		try {
 			return reservationDao.getAll(Reservation.class);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -70,7 +70,7 @@ public class ReservationService implements IReservationService {
 		try {
 			return reservationDao.getAllByUser(userId);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -80,7 +80,7 @@ public class ReservationService implements IReservationService {
 		try {
 			return reservationDao.getAllByStatus(status);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -90,7 +90,7 @@ public class ReservationService implements IReservationService {
 		try {
 			reservationDao.remove(reservationDao.getById(reservationId, Reservation.class));
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -100,7 +100,7 @@ public class ReservationService implements IReservationService {
 		try {
 			return reservationDao.getCountOfUnpaid();
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -110,7 +110,7 @@ public class ReservationService implements IReservationService {
 		try {
 			return reservationDao.getCountOfPaid();
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -120,7 +120,7 @@ public class ReservationService implements IReservationService {
 		try {
 			return reservationDao.getCountOfConfirmed();
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 

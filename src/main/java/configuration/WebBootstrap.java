@@ -20,6 +20,7 @@ public class WebBootstrap implements WebApplicationInitializer {
 
         AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
         rootContext.register(BaseRootConfiguration.class);
+        rootContext.register(WebConfiguration.class);
         container.addListener(new ContextLoaderListener(rootContext));
 
         AnnotationConfigWebApplicationContext servletContext = new AnnotationConfigWebApplicationContext();

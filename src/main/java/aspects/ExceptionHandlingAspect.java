@@ -41,7 +41,7 @@ public class ExceptionHandlingAspect
                 builder.append( "\n" );
             }
 
-            throw new ServiceException(e);
+            throw new ServiceException(e.getMessage());
         }
         catch ( Exception e )
         {

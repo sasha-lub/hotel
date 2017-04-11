@@ -44,7 +44,7 @@ public class ApplicationService implements IApplicationService {
 		try {
 			return applicationDao.add(app);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -54,7 +54,7 @@ public class ApplicationService implements IApplicationService {
 		try {
 			return applicationDao.getById(appId, Application.class);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -70,7 +70,7 @@ public class ApplicationService implements IApplicationService {
 		try {
 			return applicationDao.getAll(Application.class);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -80,7 +80,7 @@ public class ApplicationService implements IApplicationService {
 		try {
 			return applicationDao.getAllByUser(userId);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -90,7 +90,7 @@ public class ApplicationService implements IApplicationService {
 		try {
 			applicationDao.remove(applicationDao.getById(appId, Application.class));
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -102,7 +102,7 @@ public class ApplicationService implements IApplicationService {
 		try {
 			return responseDao.add(response);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -112,7 +112,7 @@ public class ApplicationService implements IApplicationService {
 		try {
 			return responseDao.getById(responseId, ApplicationResponse.class);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -122,7 +122,7 @@ public class ApplicationService implements IApplicationService {
 		try {
 			return responseDao.getResponseByApplication(appId);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -132,7 +132,7 @@ public class ApplicationService implements IApplicationService {
 		try {
 			return responseDao.getAll(ApplicationResponse.class);
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -142,7 +142,7 @@ public class ApplicationService implements IApplicationService {
 		try {
 			responseDao.remove(responseDao.getById(responseId, ApplicationResponse.class));
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -152,7 +152,7 @@ public class ApplicationService implements IApplicationService {
 		try {
 			return applicationDao.getCountOfNewApps();
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
@@ -162,7 +162,7 @@ public class ApplicationService implements IApplicationService {
 		try {
 			return applicationDao.getAllNew();
 		} catch (DaoException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 }
