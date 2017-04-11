@@ -21,7 +21,7 @@ import java.util.Set;
  *         message events
  *
  */
-@EnableAsync
+
 @ServerEndpoint(value = "/webSocketHandler")
 public class WebSocketHandler {
 
@@ -36,6 +36,7 @@ public class WebSocketHandler {
 	 *             handler for it.
 	 */
 	@OnMessage
+	@Async
 	public void onMessage(String message, Session session) throws AppException {
 		System.out.println("new message");
 		System.out.println(message);
@@ -71,6 +72,7 @@ public class WebSocketHandler {
 	 *            opens
 	 */
 	@OnOpen
+	@Async
 	public void onOpen(Session peer) {
 		peers.add(peer);
 	}
@@ -82,12 +84,15 @@ public class WebSocketHandler {
 	 *            connections closes
 	 */
 	@OnClose
+	@Async
 	public void onClose(Session peer) {
 		peers.remove(peer);
 	}
 
 	@OnError
+	@Async
 	public void onError(Session session, Throwable thr) {
+		System.out.println("error with web sockets");
 	}
 
 }

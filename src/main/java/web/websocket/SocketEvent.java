@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
  *
  *         Parent class for all web-socket event handlers
  */
-@EnableAsync
 @Controller
 public abstract class SocketEvent {
 
