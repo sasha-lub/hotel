@@ -50,16 +50,6 @@ public abstract  class BaseRootConfiguration implements SchedulingConfigurer {
     }
 
     @Bean
-    public DataSource dataSource() {
-        final BasicDataSource ds = new BasicDataSource();
-        ds.setDriverClassName("org.postgresql.Driver");
-        ds.setUrl("jdbc:postgresql://ec2-50-19-218-160.compute-1.amazonaws.com:5432/d97q0jv8cn7puo?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory");
-        ds.setUsername("xgnunjgoyqvvel");
-        ds.setPassword("7391371271092fe05f59c1fa9affb2b68485f88b580493271d1e6df443533f3d");
-        return ds;
-    }
-
-    @Bean
     public PlatformTransactionManager jpaTransactionManager()
     {
         return new JpaTransactionManager(
