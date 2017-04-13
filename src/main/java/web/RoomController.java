@@ -17,6 +17,7 @@ import web.constants.Path;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
+import javax.xml.ws.Response;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -90,15 +91,14 @@ public class RoomController {
     }
 
     @RequestMapping(value = "search", method = RequestMethod.GET)
-    public List<Room> filterSearch(HttpSession session,
-                                    Map<String, Object> model,
-                                    String classOfRoom,
-                                    int capacity,
-                                    int maxPrice,
-                                    String from,
-                                    String to,
-                                    String sort) throws AppException {
-        System.out.println("in search )");
+    public ResponseEntity<List<Room>> filterSearch(HttpSession session,
+                                   Map<String, Object> model,
+                                   String classOfRoom,
+                                   int capacity,
+                                   int maxPrice,
+                                   String from,
+                                   String to,
+                                   String sort) throws AppException {
         List<Room> all;
         List<Room> result = new ArrayList<Room>();
         try {
@@ -115,7 +115,6 @@ public class RoomController {
                 filter = new PriceFilter(filter, 0, maxPrice);
             }
             if (!from.isEmpty() && !to.isEmpty()) {
-
                 filter = new DatesFilter(filter, LocalDate.parse(from),
                         LocalDate.parse(to), roomService);
             }
@@ -142,7 +141,7 @@ public class RoomController {
             throw new AppException();
         }
 
-        return result;
+        return ResponseEntity.ok(result);
     }
 }
 

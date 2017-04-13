@@ -37,8 +37,14 @@ public class GenerateHandler {
     public void run() throws ServiceException {
 
 //        userService.addUser("balash@s.s", "Balash", "050 111 22 55", "123321");
-        roomService.addRoom(2, ClassOfHotelRoom.HONEYMOON, 460.3f,
-                "Pretty room with perfect view.", "/resources/images/rooms/honeymoon/3.jpg");
+//        roomService.addRoom(2, ClassOfHotelRoom.HONEYMOON, 460.3f,
+//                "Pretty room with perfect view.", "/resources/images/rooms/honeymoon/3.jpg");
+
+        roomService.addRoom(5, ClassOfHotelRoom.FAMILY, 1400.5f,
+                "Cozy room for big family.", "/resources/images/rooms/family/7.jpg");
+
+        roomService.addRoom(4, ClassOfHotelRoom.FAMILY, 1260.3f,
+                "Pretty room with perfect view.", "/resources/images/rooms/family/9.jpg");
 //        reservationService.makeReservation(roomService.getById(3), userService.getById(2),
 //                LocalDate.now().plusDays(3), LocalDate.now().plusDays(6), 4545.7f, LocalDateTime.now().plusDays(2));
 //        reservationService.makeReservation(roomService.getById(3), userService.getById(2),
@@ -50,8 +56,7 @@ public class GenerateHandler {
 
 
         User user = userService.getByEmail("sasha@s.s");
-        userService.setRole(user.getId(),Role.MANAGER);
-        userService.setName(user.getId(),"Aleksandra");
-        userService.setPhone(user.getId(), "123-456");
+        userService.setRole(user.getId(),Role.ADMIN);
+
     }
 }

@@ -35,8 +35,7 @@ function searchRooms() {
                 maxPrice: $("#search-max-price").val() || "",
                 sort: $("#sortBy").val()
             },
-            success:function(result) {
-                alert(result.size());
+            success: function (result) {
                 fillResultTable(result);
             }
         });
