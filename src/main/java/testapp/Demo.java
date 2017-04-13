@@ -11,10 +11,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Demo {
     public static void main ( String[] args ) {
         try {
-//            try (ConfigurableApplicationContext generateContext = initGenerateContext()){
-//                GenerateHandler generateHandler = generateContext.getBean( GenerateHandler.class );
-//                generateHandler.run();
-//            }
+            try (ConfigurableApplicationContext generateContext = initGenerateContext()){
+                GenerateHandler generateHandler = generateContext.getBean( GenerateHandler.class );
+                generateHandler.run();
+            }
 
             try (ConfigurableApplicationContext reportContext = initReportContext()){
                 ReportHandler reportHandler = reportContext.getBean(ReportHandler.class);

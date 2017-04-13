@@ -38,13 +38,11 @@ public class SearchEvent extends SocketEvent {
      * @throws AppException Method invokes search function with all needed params, and
      *                      sends processed data to client in right format.
      */
-    @Async
     public void execute(JsonObject jsObj, Session session) throws AppException {
         List<Room> rooms = filterSearch(jsObj);
         session.getAsyncRemote().sendText(createAnswer("rooms", rooms));
     }
 
-    @Async
     private List<Room> filterSearch(JsonObject jsObj) throws AppException {
         List<Room> all;
         List<Room> result = new ArrayList<Room>();

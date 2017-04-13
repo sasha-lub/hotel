@@ -50,6 +50,8 @@ public class GenerateHandler {
 
 
         User user = userService.getByEmail("sasha@s.s");
-        user.setRole(Role.ADMIN);
+        userService.setRole(user.getId(),Role.MANAGER);
+        userService.setName(user.getId(),"Aleksandra");
+        userService.setPhone(user.getId(), "123-456");
     }
 }

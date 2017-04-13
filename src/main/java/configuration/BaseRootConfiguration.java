@@ -40,7 +40,7 @@ public abstract  class BaseRootConfiguration implements SchedulingConfigurer {
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean ()
     {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
-        adapter.setDatabasePlatform( "org.hibernate.dialect.PostgreSQLDialect" );
+        adapter.setDatabasePlatform( "org.hibernate.dialect.MySQL5Dialect" );
 
         LocalContainerEntityManagerFactoryBean factory =
                 new LocalContainerEntityManagerFactoryBean();
