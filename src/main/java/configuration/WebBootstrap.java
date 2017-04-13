@@ -1,18 +1,15 @@
 package configuration;
 
 import org.springframework.core.annotation.Order;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
-import web.websocket.WebSocketHandler;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
-@EnableAsync
-@SuppressWarnings("unused")
+
 @Order(1)
 public class WebBootstrap implements WebApplicationInitializer {
     @Override

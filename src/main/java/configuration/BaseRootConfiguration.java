@@ -1,6 +1,5 @@
 package configuration;
 
-import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.*;
@@ -19,68 +18,64 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 
-import javax.sql.DataSource;
 import java.nio.charset.StandardCharsets;
 
 @Configuration
-@ComponentScan( basePackages = { "service.impl", "dao.impl", "aspects"})
+@ComponentScan(basePackages = {"service.impl", "dao.impl", "aspects"})
 @EnableTransactionManagement(
         mode = AdviceMode.PROXY, proxyTargetClass = false,
         order = Ordered.LOWEST_PRECEDENCE
 )
 @EnableAsync
-@EnableAspectJAutoProxy( proxyTargetClass = false )
-public abstract  class BaseRootConfiguration implements SchedulingConfigurer {
+@EnableAspectJAutoProxy(proxyTargetClass = false)
+public abstract class BaseRootConfiguration implements SchedulingConfigurer {
 
-    protected String getPersistenceUnitName (){
+    protected String getPersistenceUnitName() {
         return "HotelUpdate";
-    };
+    }
+
+    ;
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean ()
-    {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
-        adapter.setDatabasePlatform( "org.hibernate.dialect.MySQL5Dialect" );
+        adapter.setDatabasePlatform("org.hibernate.dialect.PostgreSQLDialect");
 
         LocalContainerEntityManagerFactoryBean factory =
                 new LocalContainerEntityManagerFactoryBean();
-        factory.setJpaVendorAdapter( adapter );
-        factory.setPersistenceUnitName( getPersistenceUnitName() );
+        factory.setJpaVendorAdapter(adapter);
+        factory.setPersistenceUnitName(getPersistenceUnitName());
         return factory;
     }
 
     @Bean
-    public PlatformTransactionManager jpaTransactionManager()
-    {
+    public PlatformTransactionManager jpaTransactionManager() {
         return new JpaTransactionManager(
                 this.entityManagerFactoryBean().getObject()
         );
     }
 
     @Bean
-    public LocalValidatorFactoryBean localValidatorFactoryBean()
-    {
+    public LocalValidatorFactoryBean localValidatorFactoryBean() {
         LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
-        validator.setProviderClass( HibernateValidator.class );
+        validator.setProviderClass(HibernateValidator.class);
         return validator;
     }
 
     @Bean
-    public MethodValidationPostProcessor methodValidationPostProcessor ()
-    {
+    public MethodValidationPostProcessor methodValidationPostProcessor() {
         MethodValidationPostProcessor processor = new MethodValidationPostProcessor();
-        processor.setValidator( this.localValidatorFactoryBean() );
+        processor.setValidator(this.localValidatorFactoryBean());
         return processor;
     }
 
     @Bean
-    public MessageSource messageSource()
-    {
+    public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource =
                 new ReloadableResourceBundleMessageSource();
         messageSource.setCacheSeconds(-1);
-        messageSource.setFallbackToSystemLocale( false );
-        messageSource.setDefaultEncoding( StandardCharsets.UTF_8.name());
+        messageSource.setFallbackToSystemLocale(false);
+        messageSource.setDefaultEncoding(StandardCharsets.UTF_8.name());
         messageSource.setBasenames(
                 "/WEB-INF/i18n/resources"
         );
@@ -88,8 +83,7 @@ public abstract  class BaseRootConfiguration implements SchedulingConfigurer {
     }
 
     @Bean
-    public ThreadPoolTaskScheduler taskScheduler()
-    {
+    public ThreadPoolTaskScheduler taskScheduler() {
         ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
         scheduler.setPoolSize(20);
         scheduler.setThreadNamePrefix("task-");
@@ -99,9 +93,8 @@ public abstract  class BaseRootConfiguration implements SchedulingConfigurer {
     }
 
     @Override
-    public void configureTasks( ScheduledTaskRegistrar registrar )
-    {
+    public void configureTasks(ScheduledTaskRegistrar registrar) {
         TaskScheduler scheduler = this.taskScheduler();
-        registrar.setTaskScheduler( scheduler );
+        registrar.setTaskScheduler(scheduler);
     }
 }
