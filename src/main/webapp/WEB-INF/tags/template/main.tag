@@ -34,7 +34,6 @@
 <script src="<c:url value="/resources/js/application.js" />"></script>
 <script src="<c:url value="/resources/js/search.js" />"></script>
 <script src="<c:url value="/resources/js/room.js" />"></script>
-<script src="<c:url value="/resources/js/websocketHandler.js" />"></script>
 
 	<jsp:invoke fragment="headContent" />
 
