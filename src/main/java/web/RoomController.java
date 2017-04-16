@@ -67,6 +67,23 @@ public class RoomController {
         return Path.PAGE_ROOM;
     }
 
+    @RequestMapping(value = "app", method = RequestMethod.GET)
+    public ResponseEntity addApp(HttpSession session,
+                         Map<String, Object> model,
+                         int userId,
+                         int numberOfGuests,
+                         String fromDate,
+                         String toDate,
+                         String comment) throws AppException {
+        try {
+
+
+        } catch (ServiceException e) {
+            throw new AppException(e.getMessage());
+        }
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
     @RequestMapping(value = "check", method = RequestMethod.GET)
     public ResponseEntity checkIfAvailable(HttpSession session,
                                            Map<String, Object> model,
@@ -92,13 +109,13 @@ public class RoomController {
 
     @RequestMapping(value = "search", method = RequestMethod.GET)
     public ResponseEntity<List<Room>> filterSearch(HttpSession session,
-                                   Map<String, Object> model,
-                                   String classOfRoom,
-                                   int capacity,
-                                   int maxPrice,
-                                   String from,
-                                   String to,
-                                   String sort) throws AppException {
+                                                   Map<String, Object> model,
+                                                   String classOfRoom,
+                                                   int capacity,
+                                                   int maxPrice,
+                                                   String from,
+                                                   String to,
+                                                   String sort) throws AppException {
         List<Room> all;
         List<Room> result = new ArrayList<Room>();
         try {
