@@ -16,6 +16,8 @@ public interface IRoomService {
 
 	Room getById(int roomId) throws ServiceException;
 
+	void updateAvgRate(int roomId, float rate) throws ServiceException;
+
 	List<Room> getAll() throws ServiceException;
 
 	List<Room> getAllByClass(ClassOfHotelRoom classOfRoom) throws ServiceException;
@@ -26,15 +28,13 @@ public interface IRoomService {
 
 	void delete(int roomId) throws ServiceException;
 
-	void update(Room room) throws ServiceException;
-
 	List<String> getAllPhotos(int roomId) throws ServiceException;
 
 	void addNewPhoto(int roomId, String photoUrl) throws ServiceException;
 
 	List<Recall> getAllRecalls(int roomId) throws ServiceException;
 
-	Recall addNewRecall(User user, Room room, int rate, String recall) throws ServiceException;
+	void addNewRecall(User user, Room room, int rate, String recall) throws ServiceException;
 
 	float getRoomAvgRate(int roomId) throws ServiceException;
 
@@ -42,6 +42,10 @@ public interface IRoomService {
 	
 	Recall getUserRecallForRoom(int userId, int roomId) throws ServiceException;
 
-	void updateRecall(Recall recall) throws ServiceException;
+	void updateRecallRate(Recall recall, int rate) throws ServiceException;
+
+	void updateRecallComment(Recall recall, String comment) throws ServiceException;
+
+
 
 }

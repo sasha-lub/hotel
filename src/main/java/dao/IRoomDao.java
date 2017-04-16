@@ -24,7 +24,7 @@ public interface IRoomDao extends IDao<Room>{
 	
 	void addRoomPhoto(int roomId, String photoUrl) throws DaoException;
 	
-	Recall addRoomRecall(int roomId, Recall recall) throws DaoException;
+	void addRoomRecall(int roomId, Recall recall) throws DaoException;
 
 	List<Room> getAllUnAvailableForDates(LocalDate fromDate, LocalDate toDate) throws DaoException;
 

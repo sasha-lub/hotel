@@ -114,7 +114,6 @@ public class AccountController {
             role = user.getRole();
             if (role.equals(Role.ADMIN)) {
                 initAdminPage(model);
-                System.out.println(model);
                 return Path.PAGE_ADMIN;
             }
         }

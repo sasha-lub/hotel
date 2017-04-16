@@ -35,6 +35,7 @@ function closeAppForm() {
 }
 
 function addApp(userId) {
+    alert("new app");
     var numberOfGuests = $("#capacity").val() || "";
     var classOfRoom = $("#classOfRoom").val() || "";
     var fromDate = $("#from-date").val() || "";
@@ -43,7 +44,7 @@ function addApp(userId) {
 
     if (validAppDates(fromDate, toDate)) {
         $("#new-app-error").text("");
-
+        alert("all valid");
         $.ajax({
             url: "/room/app",
             cache: false,

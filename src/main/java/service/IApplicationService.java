@@ -20,9 +20,7 @@ public interface IApplicationService {
 	List<Application> getAllApplicationsByUser(int userId) throws ServiceException;
 	
 	int getCountOfNewApps() throws ServiceException;
-	
-	void updateApplication(Application application) throws ServiceException;
-	
+
 	List<Application> getAllNewApplications() throws ServiceException;
 	
 	void deleteApplication(int appId) throws ServiceException;
@@ -37,4 +35,5 @@ public interface IApplicationService {
 	
 	void deleteResponse(int responseId) throws ServiceException;
 
+    void updateApplicationIsNewStatus(int appId, boolean b) throws ServiceException;
 }

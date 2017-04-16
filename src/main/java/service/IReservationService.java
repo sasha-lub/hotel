@@ -18,7 +18,7 @@ public interface IReservationService {
 	
 	Reservation getById(int reservationId) throws ServiceException;
 	
-	void update(Reservation entity) throws ServiceException;		
+	void updateStatus(int id, ReservationStatus status) throws ServiceException;
 	
 	List<Reservation> getAll() throws ServiceException;
 

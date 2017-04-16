@@ -1,6 +1,5 @@
 package web;
 
-import com.google.gson.Gson;
 import exception.AppException;
 import exception.ServiceException;
 import model.*;
@@ -13,14 +12,12 @@ import service.IApplicationService;
 import service.IReservationService;
 import service.IRoomService;
 import service.IUserService;
-import service.impl.ApplicationService;
 import utils.searchfilter.*;
 import web.constants.AnswerStatus;
 import web.constants.Path;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
-import javax.xml.ws.Response;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -41,17 +38,18 @@ public class RoomController {
     @Inject
     private IUserService userService;
 
-    @RequestMapping(value = "changeReservationStatus", method = RequestMethod.GET)
+    @RequestMapping(value = "changeReservationStatus", method = RequestMethod.POST)
     public ResponseEntity changeReservationStatus(HttpSession session,
                                                   int reserveId,
                                                   String status) throws AppException {
         try {
-            Reservation reservation = reservationService.getById(reserveId);
-            reservation.setStatus(ReservationStatus.valueOf(status));
-            reservationService.update(reservation);
-
+            System.out.println("changing status for :" + status);
+            ReservationStatus reservationStatus = ReservationStatus.valueOf(status);
+            reservationService.updateStatus(reserveId, reservationStatus);
+            System.out.println("after" + reservationService.getById(reserveId));
             return new ResponseEntity(HttpStatus.OK);
         } catch (NumberFormatException | ServiceException e) {
+            System.out.println("error ocured (" + e.getMessage());
             throw new AppException(e.getMessage());
         }
     }
@@ -74,7 +72,7 @@ public class RoomController {
         return Path.PAGE_ROOM;
     }
 
-    @RequestMapping(value = "app", method = RequestMethod.GET)
+    @RequestMapping(value = "app", method = RequestMethod.POST)
     public ResponseEntity addApp(HttpSession session,
                                  Map<String, Object> model,
                                  int userId,
@@ -134,7 +132,6 @@ public class RoomController {
         List<Room> result = new ArrayList<Room>();
         try {
             all = roomService.getAll();
-            System.out.println(all);
             RoomsFilter filter = null;
             if (!classOfRoom.isEmpty()) {
                 filter = new ClassFilter(filter, ClassOfHotelRoom.valueOf(classOfRoom));

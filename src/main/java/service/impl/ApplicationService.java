@@ -60,8 +60,13 @@ public class ApplicationService implements IApplicationService {
 
 	@Transactional
 	@Override
-	public void updateApplication(Application application) throws ServiceException {
-		//todo
+	public void updateApplicationIsNewStatus(int id, boolean isNew) throws ServiceException {
+		try {
+			Application application = applicationDao.getById(id, Application.class);
+			application.setNew(isNew);
+		} catch (DaoException e) {
+			throw new ServiceException(e.getMessage());
+		}
 	}
 
 	@Transactional

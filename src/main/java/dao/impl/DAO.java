@@ -19,7 +19,6 @@ public abstract class DAO<T> {
     }
 
     public T add(T entity) {
-
        return this.entityManager.merge(entity);
     }
 

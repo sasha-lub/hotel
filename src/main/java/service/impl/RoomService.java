@@ -51,6 +51,16 @@ public class RoomService implements IRoomService {
 		}
 	}
 
+	@Override
+	public void updateAvgRate(int roomId, float rate) throws ServiceException {
+		try {
+			Room room = dao.getById(roomId, Room.class);
+			room.setAvgRating(rate);
+		} catch (DaoException e) {
+			throw new ServiceException(e.getMessage());
+		}
+	}
+
 	@Transactional
 	@Override
 	public List<Room> getAll() throws ServiceException {
@@ -119,12 +129,6 @@ public class RoomService implements IRoomService {
 
 	@Transactional
 	@Override
-	public void update(Room room) throws ServiceException {
-
-	}
-
-	@Transactional
-	@Override
 	public List<String> getAllPhotos(int roomId) throws ServiceException {
 
 		try {
@@ -156,11 +160,11 @@ public class RoomService implements IRoomService {
 
 	@Transactional
 	@Override
-	public Recall addNewRecall(User user, Room room, int rate, String recallComent) throws ServiceException {
+	public void addNewRecall(User user, Room room, int rate, String recallComment) throws ServiceException {
 
-		Recall recall = new Recall(user, rate, recallComent);
+		Recall recall = new Recall(user, rate, recallComment);
 		try {
-			return dao.addRoomRecall(room.getId(), recall);
+			dao.addRoomRecall(room.getId(), recall);
 		} catch (DaoException e) {
 			throw new ServiceException(e.getMessage());
 		}
@@ -188,7 +192,14 @@ public class RoomService implements IRoomService {
 
 	@Transactional
 	@Override
-	public void updateRecall(Recall recall) throws ServiceException {
+	public void updateRecallRate(Recall recall, int rate) {
+		recall.setRate(rate);
+	}
 
+
+	@Transactional
+	@Override
+	public void updateRecallComment(Recall recall, String comment){
+		recall.setComment(comment);
 	}
 }
