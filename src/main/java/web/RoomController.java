@@ -9,8 +9,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import service.IApplicationService;
 import service.IReservationService;
 import service.IRoomService;
+import service.IUserService;
+import service.impl.ApplicationService;
 import utils.searchfilter.*;
 import web.constants.AnswerStatus;
 import web.constants.Path;
@@ -33,6 +36,10 @@ public class RoomController {
     private IReservationService reservationService;
     @Inject
     private IRoomService roomService;
+    @Inject
+    private IApplicationService applicationService;
+    @Inject
+    private IUserService userService;
 
     @RequestMapping(value = "changeReservationStatus", method = RequestMethod.GET)
     public ResponseEntity changeReservationStatus(HttpSession session,
@@ -69,15 +76,22 @@ public class RoomController {
 
     @RequestMapping(value = "app", method = RequestMethod.GET)
     public ResponseEntity addApp(HttpSession session,
-                         Map<String, Object> model,
-                         int userId,
-                         int numberOfGuests,
-                         String fromDate,
-                         String toDate,
-                         String comment) throws AppException {
+                                 Map<String, Object> model,
+                                 int userId,
+                                 int numberOfGuests,
+                                 String fromDate,
+                                 String toDate,
+                                 String classOfRoom,
+                                 String comment) throws AppException {
         try {
-
-
+            applicationService.newApplication(
+                    userService.getById(userId),
+                    numberOfGuests,
+                    LocalDate.parse(fromDate),
+                    LocalDate.parse(toDate),
+                    ClassOfHotelRoom.valueOf(classOfRoom),
+                    comment
+            );
         } catch (ServiceException e) {
             throw new AppException(e.getMessage());
         }
