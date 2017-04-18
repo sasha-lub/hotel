@@ -43,13 +43,10 @@ public class RoomController {
                                                   int reserveId,
                                                   String status) throws AppException {
         try {
-            System.out.println("changing status for :" + status);
             ReservationStatus reservationStatus = ReservationStatus.valueOf(status);
             reservationService.updateStatus(reserveId, reservationStatus);
-            System.out.println("after" + reservationService.getById(reserveId));
             return new ResponseEntity(HttpStatus.OK);
         } catch (NumberFormatException | ServiceException e) {
-            System.out.println("error ocured (" + e.getMessage());
             throw new AppException(e.getMessage());
         }
     }
@@ -61,11 +58,11 @@ public class RoomController {
         try {
             Room room = roomService.getById(roomId);
             room.setAvgRating(roomService.getRoomAvgRate(room.getId()));
-            room.setPhotos(roomService.getAllPhotos(room.getId()));
-            List<Recall> recalls = roomService.getAllRecalls(room.getId());
+            List<Recall> recalls = roomService.getAllRecalls(roomId);
+            List<Photo> photos = roomService.getAllPhotos(roomId);
             model.put("room", room);
             model.put("recalls", recalls);
-
+            model.put("photos", photos);
         } catch (ServiceException e) {
             throw new AppException(e.getMessage());
         }
@@ -132,21 +129,26 @@ public class RoomController {
         List<Room> result = new ArrayList<Room>();
         try {
             all = roomService.getAll();
+            for(Room r : all){
+                System.out.println(r.getId()+" "+r.getClassOfRoom()+" "+r.getMainPhoto());
+            }
             RoomsFilter filter = null;
-            if (!classOfRoom.isEmpty()) {
-                filter = new ClassFilter(filter, ClassOfHotelRoom.valueOf(classOfRoom));
-            }
-            if (capacity != 0) {
-                filter = new CapacityFilter(filter, capacity);
-            }
-            if (maxPrice != 0) {
-                filter = new PriceFilter(filter, 0, maxPrice);
-            }
             if (!from.isEmpty() && !to.isEmpty()) {
                 filter = new DatesFilter(filter, LocalDate.parse(from),
                         LocalDate.parse(to), roomService);
             }
 
+            if (maxPrice != 0) {
+                filter = new PriceFilter(filter, 0, maxPrice);
+            }
+
+            if (!classOfRoom.isEmpty()) {
+                filter = new ClassFilter(filter, ClassOfHotelRoom.valueOf(classOfRoom));
+            }
+
+            if (capacity != 0) {
+                filter = new CapacityFilter(filter, capacity);
+            }
             for (Room cur : all) {
                 if (filter.accept(cur)) {
                     result.add(cur);

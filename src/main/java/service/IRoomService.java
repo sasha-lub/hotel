@@ -4,10 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import exception.ServiceException;
-import model.ClassOfHotelRoom;
-import model.Recall;
-import model.Room;
-import model.User;
+import model.*;
 
 public interface IRoomService {
 
@@ -28,7 +25,7 @@ public interface IRoomService {
 
 	void delete(int roomId) throws ServiceException;
 
-	List<String> getAllPhotos(int roomId) throws ServiceException;
+	List<Photo> getAllPhotos(int roomId) throws ServiceException;
 
 	void addNewPhoto(int roomId, String photoUrl) throws ServiceException;
 
@@ -45,7 +42,5 @@ public interface IRoomService {
 	void updateRecallRate(Recall recall, int rate) throws ServiceException;
 
 	void updateRecallComment(Recall recall, String comment) throws ServiceException;
-
-
 
 }

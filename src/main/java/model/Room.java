@@ -35,10 +35,6 @@ public class Room implements Serializable{
 
 	@Column
 	private String mainPhoto;
-
-	@ElementCollection(fetch = FetchType.EAGER)
-	@CollectionTable(name = "photos")
-	private List<String> photos;
 	
 	public Room(){
 	}
@@ -107,19 +103,11 @@ public class Room implements Serializable{
 		this.mainPhoto = mainPhoto;
 	}
 
-	public List<String> getPhotos() {
-		return photos;
-	}
-
-	public void setPhotos(List<String> photos) {
-		this.photos = photos;
-	}
-
 	@Override
 	public String toString() {
 		return "Room [id=" + id + ", capacity=" + capacity + ", classOfRoom=" + classOfRoom + ", price=" + price
 				+ ", description=" + description
-				+ ", avgRating=" + avgRating + ", mainPhoto=" + mainPhoto + ", photos=" + photos + "]";
+				+ ", avgRating=" + avgRating + ", mainPhoto=" + mainPhoto + "]";
 	}
 
 	@Override

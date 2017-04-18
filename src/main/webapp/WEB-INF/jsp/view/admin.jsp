@@ -54,9 +54,9 @@
                     <ul class="collapsible" data-collapsible="accordion">
                         <li>
                             <div class="yellow accent-1 collapsible-header active"><i class="material-icons">done</i>
-                                <spring:message code='admin.paid'/><b> <span
-                                        id="paid-counter-server">(${paidReservations.size()})</span><span
-                                        id="paid-counter"></span></b></div>
+                                <spring:message code='admin.paid'/><b>(<span
+                                        id="paid-counter-server">${paidReservations.size()}</span><span
+                                        id="paid-counter"></span>)</b></div>
                             <div class="collapsible-body">
                                 <table class="highlight" id="paid-reservationsList">
                                     <thead>
@@ -65,7 +65,6 @@
                                         <th><spring:message code='admin.room_id'/></th>
                                         <th><spring:message code='admin.checkin'/></th>
                                         <th><spring:message code='admin.checkout'/></th>
-                                        <th><spring:message code='admin.deadline'/></th>
                                         <th><spring:message code='admin.total_price'/></th>
                                         <th><spring:message code='admin.status'/></th>
                                     </tr>
@@ -78,7 +77,6 @@
                                             <td>${reserve.room.id}</td>
                                             <td>${reserve.checkInDate}</td>
                                             <td>${reserve.checkOutDate}</td>
-                                            <td>${reserve.paymentDeadline}</td>
                                             <td>${reserve.price}</td>
                                             <td>${reserve.status}</td>
                                         </tr>
@@ -89,9 +87,9 @@
                         </li>
                         <li>
                             <div class="red accent-1 collapsible-header active"><i class="material-icons">av_timer</i>
-                                <spring:message code='admin.unpaid'/> <b> <span
-                                        id="unpaid-counter-server">(${unpaidReservations.size()})</span><span
-                                        id="unpaid-counter"></span></b></div>
+                                <spring:message code='admin.unpaid'/> <b> (<span
+                                        id="unpaid-counter-server">${unpaidReservations.size()}</span><span
+                                        id="unpaid-counter"></span>)</b></div>
                             <div class="collapsible-body">
                                 <table class="highlight" id="reservationsList">
                                     <thead>
@@ -100,7 +98,6 @@
                                         <th><spring:message code='admin.room_id'/></th>
                                         <th><spring:message code='admin.checkin'/></th>
                                         <th><spring:message code='admin.checkout'/></th>
-                                        <th><spring:message code='admin.deadline'/></th>
                                         <th><spring:message code='admin.total_price'/></th>
                                         <th><spring:message code='admin.status'/></th>
                                     </tr>
@@ -114,7 +111,6 @@
                                             <td>${reserve.room.id}</td>
                                             <td>${reserve.checkInDate}</td>
                                             <td>${reserve.checkOutDate}</td>
-                                            <td>${reserve.paymentDeadline}</td>
                                             <td>${reserve.price}</td>
                                             <td>${reserve.status}</td>
                                         </tr>
@@ -125,9 +121,9 @@
                         </li>
                         <li>
                             <div class="green accent-2 collapsible-header "><i class="material-icons">done_all</i>
-                                <spring:message code='admin.confirmed'/><b> <span
-                                        id="conf-counter-server">(${confirmedReservations.size()})</span><span
-                                        id="conf-counter"></span></b></div>
+                                <spring:message code='admin.confirmed'/><b>(<span
+                                        id="conf-counter-server">${confirmedReservations.size()}</span><span
+                                        id="conf-counter"></span>)</b></div>
                             <div class="collapsible-body">
                                 <table class="highlight" id="confirmed-reservationsList">
                                     <thead>
@@ -136,7 +132,6 @@
                                         <th><spring:message code='admin.room_id'/></th>
                                         <th><spring:message code='admin.checkin'/></th>
                                         <th><spring:message code='admin.checkout'/></th>
-                                        <th><spring:message code='admin.deadline'/></th>
                                         <th><spring:message code='admin.total_price'/></th>
                                         <th><spring:message code='admin.status'/></th>
                                     </tr>
@@ -148,7 +143,6 @@
                                             <td>${reserve.room.id}</td>
                                             <td>${reserve.checkInDate}</td>
                                             <td>${reserve.checkOutDate}</td>
-                                            <td>${reserve.paymentDeadline}</td>
                                             <td>${reserve.price}</td>
                                             <td>${reserve.status}</td>
                                         </tr>

@@ -11,11 +11,6 @@ $(document).ready(function () {
     })
 })
 
-function newApps(countOfNewApps) {
-    $('#newAppsServer').hide();
-    $('#newApps').text(countOfNewApps);
-}
-
 function openAppForm() {
 
     $("#start-app-btn").slideUp("slow", function () {
@@ -35,11 +30,11 @@ function closeAppForm() {
 }
 
 function addApp(userId) {
-    var numberOfGuests = $("#capacity").val() || "";
-    var classOfRoom = $("#classOfRoom").val() || "";
-    var fromDate = $("#from-date").val() || "";
-    var toDate = $("#to-date").val() || "";
-    var comment = $("#comment").val() || "";
+    var numberOfGuests = $("#capacity").val() || "1";
+    var classOfRoom = $("#classOfRoom").val() || "STANDARD";
+    var fromDate = $("#from-date").val();
+    var toDate = $("#to-date").val();
+    var comment = $("#comment").val();
 
     if (validAppDates(fromDate, toDate)) {
         $("#new-app-error").text("");
@@ -54,7 +49,8 @@ function addApp(userId) {
                 fromDate: fromDate,
                 toDate: toDate,
                 comment: comment
-            }});
+            }
+        });
 
         closeAppForm();
 
@@ -81,5 +77,7 @@ function addAppRow(app) {
     var td_to = "<td>" + getDate(app.checkOutDate) + "</td>";
     var td_class = "<td>" + app.classOfRoom + "</td>";
     var td_comment = "<td>" + app.comment + "</td>";
-    $("#newApplicationsList").append("<tr id='app" + app.id + "' data-target='createAppResponseModal' onclick='resolveApp(this.id)'>" + td_userId + td_numOfGuests + td_from + td_to + td_class + td_comment + "</tr>");
+    $("#newApplicationsList").append("<tr id='app" + app.id +
+        "' data-target='createAppResponseModal' onclick='resolveApp(this.id)'>"
+        + td_userId + td_numOfGuests + td_from + td_to + td_class + td_comment + "</tr>");
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import exception.DaoException;
 import model.ClassOfHotelRoom;
+import model.Photo;
 import model.Recall;
 import model.Room;
 
@@ -16,7 +17,7 @@ public interface IRoomDao extends IDao<Room>{
 	
 	List<Room> getAllByCapacity(int numberOfGuests) throws DaoException;
 	
-	List<String> getRoomPhotos(int roomId) throws DaoException;
+	List<Photo> getRoomPhotos(int roomId) throws DaoException;
 	
 	float getRoomAvgRate(int roomId) throws DaoException;
 

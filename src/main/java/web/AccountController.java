@@ -85,13 +85,11 @@ public class AccountController {
                 throw new WrongPassException();
             }
 
-            userService.login(email, Codec.md5(password));
-            User user = userService.getByEmail(email);
-            if (user != null) {
-                session.setAttribute("user", user);
-                session.setAttribute("userRole", user.getRole());
-                return new ResponseEntity(HttpStatus.OK);
-            }
+            User user = userService.login(email, Codec.md5(password));
+            session.setAttribute("user", user);
+            session.setAttribute("userRole", user.getRole());
+            return new ResponseEntity(HttpStatus.OK);
+
         } catch (WrongPassException e) {
             return new ResponseEntity(HttpStatus.valueOf(AnswerStatus.NOT_AVAILABLE));
 
@@ -101,8 +99,6 @@ public class AccountController {
         } catch (ServiceException e) {
             return new ResponseEntity(HttpStatus.valueOf(AnswerStatus.SERVER_ERROR));
         }
-
-        return new ResponseEntity(HttpStatus.valueOf(AnswerStatus.SERVER_ERROR));
     }
 
     @RequestMapping(value = "redirect", method = RequestMethod.GET)

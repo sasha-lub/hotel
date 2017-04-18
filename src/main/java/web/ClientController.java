@@ -3,10 +3,7 @@ package web;
 import com.google.gson.Gson;
 import exception.AppException;
 import exception.ServiceException;
-import model.Recall;
-import model.Reservation;
-import model.ReservationStatus;
-import model.User;
+import model.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -28,6 +25,7 @@ import java.io.Writer;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 import java.util.Map;
 
 
@@ -52,10 +50,16 @@ public class ClientController {
             model.put("errorMessage", "You are not authorized");
             return Path.PAGE_ERROR_PAGE;
         } else {
-
             try {
+                List<Application> apps = applicationService.getAllApplicationsByUser(user.getId());
+                for (Application app : apps) {
+                    if (applicationService.getResponseForApplication(app.getId()) != null) {
+                        app.setResponse(applicationService.getResponseForApplication(app.getId()));
+                    }
+                }
+
                 model.put("reserves", reservationService.getAllByUser(user.getId()));
-                model.put("apps", applicationService.getAllApplicationsByUser(user.getId()));
+                model.put("apps", apps);
             } catch (ServiceException e) {
                 throw new AppException(e.getMessage());
             }
@@ -110,10 +114,9 @@ public class ClientController {
                     int days = (int) ChronoUnit.DAYS.between(fromDate, toDate);
                     float pricePerDay = roomService.getById(roomId).getPrice();
                     float totalPrice = pricePerDay * days;
-                    Reservation reservation = reservationService.makeReservation(roomService.getById(roomId), user,
+                    reservationService.makeReservation(roomService.getById(roomId), user,
                             fromDate.plusDays(1), toDate.plusDays(1),
                             totalPrice, LocalDateTime.now().plusDays(2));
-                    writer.write(new Gson().toJson(reservation.getId()));
                     return new ResponseEntity(HttpStatus.valueOf(AnswerStatus.OK));
                 }
             }
@@ -169,9 +172,7 @@ public class ClientController {
             switch (field) {
                 case "name": {
                     if (Validator.Name(name)) {
-                        System.out.println("changing name");
                         userService.setName(user.getId(), name);
-                        System.out.println(userService.getById(user.getId()));
                     } else {
                         return new ResponseEntity(HttpStatus.valueOf(AnswerStatus.INVALID_INPUT));
                     }
@@ -202,9 +203,12 @@ public class ClientController {
                     break;
                 }
             }
+
+            session.setAttribute("user", userService.getById(user.getId()));
         } catch (ServiceException e) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
         return new ResponseEntity(HttpStatus.OK);
     }
 }

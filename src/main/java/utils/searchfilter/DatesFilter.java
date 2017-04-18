@@ -31,6 +31,7 @@ public class DatesFilter extends RoomsFilter{
 	@Override
 	public boolean currentAccept(Room room) throws AppException {
 		try {
+			System.out.println(roomService.isAvailable(room.getId(), from, to));
 			return roomService.isAvailable(room.getId(), from, to);
 		} catch (ServiceException e) {
 			throw new AppException();

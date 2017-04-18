@@ -29,17 +29,7 @@ public class ReportHandler {
     @Inject
     IReservationService reservationService;
     public void run() throws ServiceException {
-//        System.out.println(roomService.isAvailable(3,
-//                LocalDate.of(2017, 3, 3), LocalDate.of(2017, 3, 8)));
-//        System.out.println(roomService.isAvailable(3,
-//                LocalDate.of(2017, 3, 6), LocalDate.of(2017, 3, 22)));
-//        System.out.println(roomService.isAvailable(3,
-//                LocalDate.of(2017, 2, 12), LocalDate.of(2017, 3, 2)));
-//        System.out.println(roomService.isAvailable(3,
-//                LocalDate.of(2017, 2, 12), LocalDate.of(2017, 3, 3)));
 
-        System.out.println(roomService.getAll());
-        System.out.println(userService.getAll());
 
     }
 }

@@ -5,9 +5,9 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-50-19-218-160.compute-1.amazonaws.com:5432/d97q0jv8cn7puo?sslmode=require"/>
-            <property name="javax.persistence.jdbc.user" value="xgnunjgoyqvvel"/>
-            <property name="javax.persistence.jdbc.password" value="7391371271092fe05f59c1fa9affb2b68485f88b580493271d1e6df443533f3d"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-23-23-222-147.compute-1.amazonaws.com:5432/d6fplsru5kivh9?sslmode=require"/>
+            <property name="javax.persistence.jdbc.user" value="camliokytcoxqf"/>
+            <property name="javax.persistence.jdbc.password" value="1bafd6267409440b2b272d6170ff4674e611687c0c0e3f8e6b29c2bde21a1563"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.show_sql" value="false"/>
         </properties>
@@ -16,9 +16,9 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-50-19-218-160.compute-1.amazonaws.com:5432/d97q0jv8cn7puo?sslmode=require"/>
-            <property name="javax.persistence.jdbc.user" value="xgnunjgoyqvvel"/>
-            <property name="javax.persistence.jdbc.password" value="7391371271092fe05f59c1fa9affb2b68485f88b580493271d1e6df443533f3d"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-23-23-222-147.compute-1.amazonaws.com:5432/d6fplsru5kivh9?sslmode=require"/>
+            <property name="javax.persistence.jdbc.user" value="camliokytcoxqf"/>
+            <property name="javax.persistence.jdbc.password" value="1bafd6267409440b2b272d6170ff4674e611687c0c0e3f8e6b29c2bde21a1563"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.show_sql" value="false"/>
         </properties>
@@ -27,9 +27,9 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-50-19-218-160.compute-1.amazonaws.com:5432/d97q0jv8cn7puo?sslmode=require"/>
-            <property name="javax.persistence.jdbc.user" value="xgnunjgoyqvvel"/>
-            <property name="javax.persistence.jdbc.password" value="7391371271092fe05f59c1fa9affb2b68485f88b580493271d1e6df443533f3d"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-23-23-222-147.compute-1.amazonaws.com:5432/d6fplsru5kivh9?sslmode=require"/>
+            <property name="javax.persistence.jdbc.user" value="camliokytcoxqf"/>
+            <property name="javax.persistence.jdbc.password" value="1bafd6267409440b2b272d6170ff4674e611687c0c0e3f8e6b29c2bde21a1563"/>
             <property name="hibernate.hbm2ddl.auto" value="validate"/>
             <property name="hibernate.show_sql" value="false"/>
         </properties>

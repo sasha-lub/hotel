@@ -29,11 +29,11 @@ function searchRooms() {
             type: 'GET',
             data: {
                 classOfRoom: $("#search-classOfRoom").val() || "",
-                capacity: $("#search-capacity").val() || "",
-                from: $("#search-from-date").val(),
-                to: $("#search-to-date").val(),
-                maxPrice: $("#search-max-price").val() || "",
-                sort: $("#sortBy").val()
+                capacity: $("#search-capacity").val() || 0,
+                from: $("#search-from-date").val() || "",
+                to: $("#search-to-date").val() || "",
+                maxPrice: $("#search-max-price").val() || 0,
+                sort: $("#sortBy").val() || "down"
             },
             success: function (result) {
                 fillResultTable(result);
@@ -67,5 +67,6 @@ function validDates(from, to) {
         }
         return true;
     }
+
     return true;
 }

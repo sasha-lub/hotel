@@ -30,11 +30,6 @@ public class ApplicationService implements IApplicationService {
 	@Inject
 	private IResponseDao responseDao;
 
-	public ApplicationService() {
-		System.out.println(0x81 );
-		float i = 0x81;
-	}
-
 	@Transactional
 	@Override
 	public Application newApplication(User user, int numOfGuests, LocalDate from, LocalDate to,
@@ -101,11 +96,10 @@ public class ApplicationService implements IApplicationService {
 
 	@Transactional
 	@Override
-	public ApplicationResponse newAppResponse(Application app, int roomId, String comment) throws ServiceException {
-
+	public void newAppResponse(Application app, int roomId, String comment) throws ServiceException {
 		ApplicationResponse response = new ApplicationResponse(app, roomId, comment);
 		try {
-			return responseDao.add(response);
+			responseDao.add(response);
 		} catch (DaoException e) {
 			throw new ServiceException(e.getMessage());
 		}

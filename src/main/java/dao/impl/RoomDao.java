@@ -3,6 +3,7 @@ package dao.impl;
 import dao.IRoomDao;
 import exception.DaoException;
 import model.ClassOfHotelRoom;
+import model.Photo;
 import model.Recall;
 import model.Room;
 import org.springframework.stereotype.Repository;
@@ -77,16 +78,17 @@ public class RoomDao extends DAO<Room> implements IRoomDao {
     }
 
     @Override
-    public List<String> getRoomPhotos(int roomId) throws DaoException {
-        String hql = "SELECT photos FROM photos WHERE room_id =" + roomId;
+    public List<Photo> getRoomPhotos(int roomId) throws DaoException {
+        String hql = "SELECT photo FROM Photo as photo WHERE photo.room.id =" + roomId;
         Query query = getEntityManager().createQuery(hql);
         return query.getResultList();
     }
 
     @Override
     public float getRoomAvgRate(int roomId) throws DaoException {
-        String hql = "SELECT AVG (recall.rate) FROM Recall as recall WHERE recall.room.id =" + roomId;
+        String hql = "SELECT AVG (recall.rate) FROM Recall recall WHERE recall.room.id = " + roomId;
         Query query = getEntityManager().createQuery(hql);
+        System.out.println("query res " + query.getFirstResult());
         return query.getFirstResult();
     }
 
@@ -99,14 +101,12 @@ public class RoomDao extends DAO<Room> implements IRoomDao {
 
     @Override
     public void addRoomPhoto(int roomId, String photoUrl) throws DaoException {
-        String hql = "INSERT INTO photos VALUES (DEFAULT, " + roomId + "," + photoUrl + ")";
-        Query query = getEntityManager().createQuery(hql);
-        query.executeUpdate();
+        getEntityManager().merge(new Photo(getById(roomId, Room.class), photoUrl));
     }
 
     @Override
     public void addRoomRecall(int roomId, Recall recall) throws DaoException {
-        getEntityManager().persist(recall);
+        getEntityManager().merge(recall);
     }
 
     @Override

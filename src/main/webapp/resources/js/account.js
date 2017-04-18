@@ -133,15 +133,14 @@ function redirect() {
 
 function changeStatus(status, id) {
 	$.ajax({
-		url : "/account/changeReservationStatus",
+		url : "/room/changeReservationStatus",
 		cache : false,
 		type : 'POST',
 		data : {
-			reservId : id,
+			reserveId : id,
 			status : status
 		},
 		success : function() {
-			sendReserveRecordToAdmin(id);
 			changeCard(status, id);
 		}
 	});
@@ -187,9 +186,8 @@ function deleteReserve() {
 function sendRecall() {
 	var roomId = $('#room-id').val();
 	var userId = $('#user-id').val();
-	var recall = $('#recall').val() ? $('#recall').val() : "";
+	var comment = $('#comment').val();
 	var rate = $('#rate').val();
-
 	$.ajax({
 		url : "/client/recall",
 		cache : false,
@@ -198,10 +196,9 @@ function sendRecall() {
 			userId : userId,
 			roomId : roomId,
 			rate : rate,
-			recall : recall
+			comment : comment
 		},
 		success : function() {
-
 			closeRateModal();
 		}
 	});

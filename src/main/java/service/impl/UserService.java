@@ -33,7 +33,7 @@ public class UserService implements IUserService {
     public User addUser(String email, String name, String phone, String password) throws ServiceException {
         try {
             if (getByEmail(email) != null) {
-                throw new DaoException();
+                throw new ServiceException("email is already in use");
             }
             User user = new User(email, name, phone, password);
             user.setRole(Role.CLIENT);
@@ -150,8 +150,20 @@ public class UserService implements IUserService {
 
     @Transactional
     @Override
-    public boolean login(String email, String password)
-            throws ServiceException, WrongEmailException, WrongPassException {
-        return false;
+    public User login(String email, String password)
+            throws WrongEmailException, WrongPassException {
+        User user = null;
+        try {
+            user = getByEmail(email);
+        } catch (ServiceException e) {
+            throw new WrongEmailException();
+        }
+        if (user == null) {
+            throw new WrongEmailException();
+        } else if (!user.getPassword().equals(password)) {
+            throw new WrongPassException();
+        } else {
+            return user;
+        }
     }
 }

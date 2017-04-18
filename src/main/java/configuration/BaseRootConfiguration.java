@@ -34,8 +34,6 @@ public abstract class BaseRootConfiguration implements SchedulingConfigurer {
         return "HotelUpdate";
     }
 
-    ;
-
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();

@@ -30,6 +30,6 @@ public interface IUserService {
 
     void setPassword(int userId, String newPassword) throws ServiceException;
 
-    boolean login(String email, String password) throws ServiceException, WrongPassException, WrongEmailException;
+    User login(String email, String password) throws ServiceException, WrongPassException, WrongEmailException;
 
 }

@@ -2,7 +2,6 @@ package web;
 
 import exception.AppException;
 import exception.ServiceException;
-import model.Application;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -14,37 +13,37 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
-
 @Controller
-@RequestMapping(path = "/manager")
-public class ManagerController {
+@RequestMapping(path = "/application")
+public class ApplicationController {
 
     @Inject
     private IApplicationService applicationService;
 
     @RequestMapping(value = "setAppId", method = RequestMethod.POST)
-    public void account(HttpSession session,
-                          Map< String, Object > model,
-                          int appId) throws AppException {
+    public ResponseEntity setAppId(HttpSession session,
+                                  int appId) {
         session.setAttribute("appId", appId);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @RequestMapping(value = "appResponse", method = RequestMethod.POST)
     public ResponseEntity addAppResponse(HttpSession session,
-                                         Map< String, Object > model,
+                                         Map<String, Object> model,
                                          int roomId,
                                          int appId,
                                          String comment) throws AppException {
 
         if (appId != 0 && roomId != 0) {
             try {
+                System.out.println("new app response: " + appId + " " + roomId + " " + comment);
                 applicationService.newAppResponse(applicationService.getAppById(appId), roomId, comment);
                 applicationService.updateApplicationIsNewStatus(appId, false);
                 return new ResponseEntity(HttpStatus.OK);
             } catch (ServiceException e) {
                 throw new AppException();
             }
-        }else {
+        } else {
             return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
         }
     }

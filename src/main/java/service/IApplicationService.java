@@ -25,7 +25,7 @@ public interface IApplicationService {
 	
 	void deleteApplication(int appId) throws ServiceException;
 	
-	ApplicationResponse newAppResponse(Application app, int idUser, String comment) throws ServiceException;
+	void newAppResponse(Application app, int idUser, String comment) throws ServiceException;
 	
 	ApplicationResponse getResponseById(int responseId) throws ServiceException;
 	

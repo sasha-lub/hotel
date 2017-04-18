@@ -37,7 +37,8 @@ public class Recall implements Serializable{
 	public Recall(){
 	}
 	
-	public Recall(User user, int rate, String comment) {
+	public Recall(User user, Room room, int rate, String comment) {
+		this.room = room;
 		this.user = user;
 		this.rate = rate;
 		this.comment = comment;
@@ -58,7 +59,7 @@ public class Recall implements Serializable{
 	public String getComment() {
 		return comment;
 	}
-	public void setComment(String recall) {
+	public void setComment(String comment) {
 		this.comment = comment;
 	}
 
