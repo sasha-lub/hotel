@@ -14,7 +14,7 @@
                 <br><br>
                 <div class="row">
                     <div class="col s12 m12 l6">
-                        <img class="materialboxed" width="500"
+                        <img class="materialboxed" style="width: 100%;"
                              src="${room.mainPhoto}">
                     </div>
                     <div class="col s12 m12 l6">
