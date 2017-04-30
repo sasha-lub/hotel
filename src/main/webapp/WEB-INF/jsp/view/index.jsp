@@ -88,7 +88,7 @@
 								<span id="search-error" class="error"></span><br>
 
 								<span><spring:message code='form.max_price'/><span id='price-value'></span> $</span>
-								<div class="input-field">
+								<div class="range-field">
 									<i class="material-icons prefix">attach_money</i>
 									<input id="search-max-price" name="maxPrice"
 										   type="range" min="50" max="5000">

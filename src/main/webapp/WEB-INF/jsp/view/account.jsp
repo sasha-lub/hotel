@@ -41,7 +41,7 @@
                     <c:if test="${empty apps}">
                         <h2 align="center">
                             <a class="waves-effect waves-light btn-large red center"
-                               href="/index#app">
+                               href="/index/#app">
                                 <i
                                         class="material-icons right">note_add</i>
                                 <spring:message code='cabinet.first_app'/>
@@ -114,7 +114,7 @@
                         <c:if test="${empty reserves}">
                             <h2 align="center">
                                 <a class="waves-effect waves-light btn-large red"
-                                   href="Controller?command=index#search">
+                                   href="/index/#search">
                                     <i
                                             class="material-icons right">search</i>
                                     <spring:message code='cabinet.search_for_room'/>
