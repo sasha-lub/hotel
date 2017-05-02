@@ -227,7 +227,7 @@
                             </select>
                         </div>
 
-                        <div class="input-field col s6 l6 m3">
+                        <div class="range-field col s6 l6 m3">
                             <i class="material-icons prefix">attach_money</i>
                             <input id="search-max-price" name="maxPrice"
                                    type="range" min="50" max="5000" value="5000">
