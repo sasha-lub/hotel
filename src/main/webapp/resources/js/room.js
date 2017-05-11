@@ -59,7 +59,6 @@ function confirmReserve(userId, roomId) {
 			statusCode : {
 				200 : function(id) {
 					closeReservModal();
-					sendReserveRecordToAdmin(id);
 				},
 				423 : function() {
 					$("#reserv-form-error").text(

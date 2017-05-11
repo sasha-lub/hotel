@@ -81,7 +81,8 @@ function confirmPayment() {
         },
         success: function () {
             $('#confirmPaymentModal').modal('close');
-            $('tr#' + id).remove();
+
+            $('tr#' + id).insertBefore($('#confirmed-reservationsList tbody tr:first'));
             changeCounters();
         }
     });

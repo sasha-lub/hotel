@@ -12,6 +12,7 @@ function openSearchForm() {
 
 function closeSearchForm() {
     $("#rooms").fadeOut("slow");
+    $("#no-result").text("");
     $("#search-form").fadeOut("slow", function () {
         $("#start-search-btn").slideDown("slow", function () {
         });
@@ -36,7 +37,14 @@ function searchRooms() {
                 sort: $("#sortBy").val() || "down"
             },
             success: function (result) {
-                fillResultTable(result);
+                if(result.length == 0){
+                    $("#rooms tr").remove();
+                    $("#no-result").text("Sorry, nothing was found by your request, try other options.");
+                }
+                else {
+                    $("#no-result").text("");
+                    fillResultTable(result);
+                }
             }
         });
     } else {

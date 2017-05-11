@@ -66,7 +66,6 @@
                                         <th><spring:message code='admin.checkin'/></th>
                                         <th><spring:message code='admin.checkout'/></th>
                                         <th><spring:message code='admin.total_price'/></th>
-                                        <th><spring:message code='admin.status'/></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -78,7 +77,6 @@
                                             <td>${reserve.checkInDate}</td>
                                             <td>${reserve.checkOutDate}</td>
                                             <td>${reserve.price}</td>
-                                            <td>${reserve.status}</td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
@@ -99,7 +97,6 @@
                                         <th><spring:message code='admin.checkin'/></th>
                                         <th><spring:message code='admin.checkout'/></th>
                                         <th><spring:message code='admin.total_price'/></th>
-                                        <th><spring:message code='admin.status'/></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -112,7 +109,6 @@
                                             <td>${reserve.checkInDate}</td>
                                             <td>${reserve.checkOutDate}</td>
                                             <td>${reserve.price}</td>
-                                            <td>${reserve.status}</td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
@@ -133,7 +129,6 @@
                                         <th><spring:message code='admin.checkin'/></th>
                                         <th><spring:message code='admin.checkout'/></th>
                                         <th><spring:message code='admin.total_price'/></th>
-                                        <th><spring:message code='admin.status'/></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -144,7 +139,6 @@
                                             <td>${reserve.checkInDate}</td>
                                             <td>${reserve.checkOutDate}</td>
                                             <td>${reserve.price}</td>
-                                            <td>${reserve.status}</td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>

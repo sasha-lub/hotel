@@ -129,9 +129,7 @@ public class RoomController {
         List<Room> result = new ArrayList<Room>();
         try {
             all = roomService.getAll();
-            for(Room r : all){
-                System.out.println(r.getId()+" "+r.getClassOfRoom()+" "+r.getMainPhoto());
-            }
+
             RoomsFilter filter = null;
             if (!from.isEmpty() && !to.isEmpty()) {
                 filter = new DatesFilter(filter, LocalDate.parse(from),

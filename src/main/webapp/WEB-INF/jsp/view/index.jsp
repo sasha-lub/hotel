@@ -117,6 +117,7 @@
 					</div>
 
 					<div class="indigo lighten-4 container">
+						<span id="no-result"></span>
 						<table class="highlight fixed" id="rooms">
 							<col width="150px" />
 							<col />

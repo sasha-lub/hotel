@@ -29,4 +29,7 @@
     </jsp-config>
     <distributable />
 
+    <error-page>
+        <location>/WEB-INF/jsp/view/error.jsp</location>
+    </error-page>
 </web-app>

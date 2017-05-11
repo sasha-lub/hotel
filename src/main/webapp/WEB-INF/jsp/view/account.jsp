@@ -2,7 +2,7 @@
 <%--@elvariable id="apps" type="java.util.List<model.Application>"--%>
 <%--@elvariable id="reserves" type="java.util.List<model.Reservation>"--%>
 
-<template:main htmlTitle="hello">
+<template:main htmlTitle="account">
     <jsp:attribute name="activeLink">my cabinet</jsp:attribute>
     <jsp:body>
         <div class="col s12">
@@ -39,14 +39,14 @@
                     </h5>
                     <br><br><br><br>
                     <c:if test="${empty apps}">
-                        <h2 align="center">
+                        <h6 align="center">
                             <a class="waves-effect waves-light btn-large red center"
                                href="/index/#app">
                                 <i
                                         class="material-icons right">note_add</i>
                                 <spring:message code='cabinet.first_app'/>
                             </a>
-                        </h2>
+                        </h6>
                     </c:if>
                     <c:forEach items="${apps}" var="app">
                         <div class="col s12 m12">
@@ -112,14 +112,14 @@
                     <br><br>
                     <div class="row">
                         <c:if test="${empty reserves}">
-                            <h2 align="center">
+                            <h6 align="center">
                                 <a class="waves-effect waves-light btn-large red"
                                    href="/index/#search">
                                     <i
                                             class="material-icons right">search</i>
                                     <spring:message code='cabinet.search_for_room'/>
                                 </a>
-                            </h2>
+                            </h6>
                         </c:if>
                         <c:forEach items="${reserves}" var="reservation">
 

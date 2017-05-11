@@ -20,7 +20,6 @@
     <link rel="stylesheet"
           href="<c:url value="/resources/css/myStyle.css" />"/>
 
-
     <script
             src="<c:url value="/resources/js/external/jquery-3.1.1.min.js" />"></script>
     <script src="<c:url value="/resources/js/external/materialize.js" />"></script>
